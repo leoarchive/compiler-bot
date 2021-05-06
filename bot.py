@@ -31,4 +31,4 @@ async def reload_extension(ctx, extension):
 [bot.load_extension(f'cogs.{cog[:-3]}') for cog in os.listdir('./cogs/') if cog.endswith('.py')]
 
 
-bot.run('ODM5NjQyMjMzMzg4OTI0OTQ5.YJMnxA.TLrlWahfcHxKTS-vrl0YBoy1dhE')
+bot.run('token')
