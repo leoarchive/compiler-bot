@@ -31,7 +31,8 @@ class Compiler(commands.Cog):
 
     @commands.command()
     async def compile(self, ctx):
-        await ctx.send('`c` `python` `js`')
+        await ctx.send('languages\n'
+                       '`c` `python` `js`')
 
     @commands.command()
     async def c(self, ctx, *, arg):
