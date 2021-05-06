@@ -1,36 +1,45 @@
-import discord
 from discord.ext import commands
 
-from .languages import c
+
+from cogs.languages import c
+from cogs.languages import py
+from cogs.others import vim
+
+vim_ = vim
 clang = c
-
-
-async def v(ctx, arg):
-    await ctx.message.delete()
-    await ctx.send('```vim\n' + arg + '\n```')
-
+python = py
 
 class Compiler(commands.Cog):
     def __init__(self, client):
         self.client = client
 
     @commands.command()
+    async def highlight(self, ctx):
+        await ctx.send('`vimhl` `chl` `pyhl`')
+
+    @commands.command()
+    async def pyhl(self, ctx, *, arg):
+        await python.highlight(ctx, arg)
+
+    @commands.command()
+    async def vimhl(self, ctx, *, arg):
+        await vim_.highlight(ctx, arg)
+
+    @commands.command()
+    async def chl(self, ctx, *, arg):
+        await clang.highlight(ctx, arg)
+
+    @commands.command()
+    async def compile(self, ctx):
+        await ctx.send('`c` `python` `js`')
+
+    @commands.command()
     async def c(self, ctx, *, arg):
         await clang.compiler(ctx, arg)
 
     @commands.command()
-    async def syntax(self, ctx, *, arg):
-        await ctx.send('select syntax\n'
-                       '`vim` `c` `python`')
-        if ctx.message.content.startswith == 'vim':
-            await v(ctx, arg)
-        elif ctx.message.content == 'c':
-            await clang.syntax(ctx, arg)
-
-    @commands.command()
-    async def vim(self, ctx, *, arg):
-        await ctx.message.delete()
-        await ctx.send('```vim\n' + arg + '\n```')
+    async def python(self, ctx, *, arg):
+        await python.compiler(ctx, arg)
 
 
 def setup(client):

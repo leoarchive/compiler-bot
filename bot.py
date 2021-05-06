@@ -1,6 +1,7 @@
 from discord.ext import commands
+import os
 
-bot = commands.Bot('g.')
+bot = commands.Bot('~')
 
 
 @bot.event
@@ -26,7 +27,8 @@ async def reload_extension(ctx, extension):
     bot.load_extension(f'cogs.{extension}')
     await ctx.send(f"Extension {extension} reloaded successfully!")
 
+
 [bot.load_extension(f'cogs.{cog[:-3]}') for cog in os.listdir('./cogs/') if cog.endswith('.py')]
 
 
-bot.run('NTMzODQzNzM3NjU1MjQ2ODQ4.XDqquQ.75BTbLMHezkHwxk70_VJG44JB2I')
+bot.run('ODM5NjQyMjMzMzg4OTI0OTQ5.YJMnxA.TLrlWahfcHxKTS-vrl0YBoy1dhE')
