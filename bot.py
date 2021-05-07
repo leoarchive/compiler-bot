@@ -1,7 +1,11 @@
 from discord.ext import commands
 import os
+import json
 
-bot = commands.Bot('~')
+with open('config.json') as f:
+    config = json.load(f)
+
+bot = commands.Bot(config["prefix"])
 
 
 @bot.event
@@ -31,4 +35,4 @@ async def reload_extension(ctx, extension):
 [bot.load_extension(f'cogs.{cog[:-3]}') for cog in os.listdir('./cogs/') if cog.endswith('.py')]
 
 
-bot.run('token')
+bot.run(config["token"])

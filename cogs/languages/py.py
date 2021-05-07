@@ -8,9 +8,9 @@ async def highlight(ctx, arg):
 
 async def compiler(ctx, arg):
     await highlight(ctx, arg)
-    open('main.txt', 'w').close()
-    open('main.py', 'w').write(arg)
-    os.system("python main.py >> main.txt")
-    if os.stat("main.txt").st_size == 0:
-        os.system("python main.py 2> main.txt")
-    await ctx.send('```' + open('main.txt', 'r').read() + '```')
+    open('temp\main.txt', 'w').close()
+    open('temp\main.py', 'w').write(arg)
+    os.system("python temp\main.py >> temp\main.txt")
+    if os.stat("temp\main.txt").st_size == 0:
+        os.system("python temp\main.py 2> temp\main.txt")
+    await ctx.send('```' + open('temp\main.txt', 'r').read() + '```')

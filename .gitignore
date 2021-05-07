@@ -3,7 +3,8 @@ env
 venv
 .venv
 
-main*
-output.txt
+.idea
+
+temp/
 
 config.json
