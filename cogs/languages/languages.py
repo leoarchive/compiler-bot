@@ -56,7 +56,6 @@ class Language:
                 os.system("node temp\main.js 2> temp\main.txt")
             open('temp\main.js', 'w').close()
 
-    async def output(self, ctx, arg):
         output = open('temp\output.txt', 'r').read()
         main = open('temp\main.txt', 'r').read()
         if os.stat("temp\output.txt").st_size > 0 and os.stat("temp\main.txt").st_size == 0:
