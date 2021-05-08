@@ -21,17 +21,14 @@ class Compiler(commands.Cog):
     @commands.command()
     async def c(self, ctx, *, arg):
         await c.compiler(ctx, arg)
-        await c.output(ctx, arg)
 
     @commands.command()
     async def python(self, ctx, *, arg):
         await python.compiler(ctx, arg)
-        await python.output(ctx, arg)
 
     @commands.command()
     async def js(self, ctx, *, arg):
         await javascript.compiler(ctx, arg)
-        await javascript.output(ctx, arg)
 
     @commands.command()
     async def highlight(self, ctx):
