@@ -1,15 +1,12 @@
 from discord.ext import commands
 
-
-from cogs.languages import c
-from cogs.languages import py
-from cogs.languages import js
 from cogs.others import vim
+from cogs.languages import languages
 
-jslang = js
 vim_ = vim
-clang = c
-python = py
+c = languages.Language('c')
+python = languages.Language('python')
+javascript = languages.Language('js')
 
 
 class Compiler(commands.Cog):
@@ -23,31 +20,34 @@ class Compiler(commands.Cog):
 
     @commands.command()
     async def c(self, ctx, *, arg):
-        await clang.compiler(ctx, arg)
+        await c.compiler(ctx, arg)
+        await c.output(ctx, arg)
 
     @commands.command()
     async def python(self, ctx, *, arg):
         await python.compiler(ctx, arg)
+        await python.output(ctx, arg)
 
     @commands.command()
     async def js(self, ctx, *, arg):
-        await jslang.compiler(ctx, arg)
+        await javascript.compiler(ctx, arg)
+        await javascript.output(ctx, arg)
 
     @commands.command()
     async def highlight(self, ctx):
         await ctx.send('`vimhl` `chl` `pyhl` `jshl`')
 
     @commands.command()
-    async def pyhl(self, ctx, *, arg):
+    async def chl(self, ctx, *, arg):
+        await c.highlight(ctx, arg)
+
+    @commands.command()
+    async def pythonhl(self, ctx, *, arg):
         await python.highlight(ctx, arg)
 
     @commands.command()
     async def jshl(self, ctx, *, arg):
-        await jslang.highlight(ctx, arg)
-
-    @commands.command()
-    async def chl(self, ctx, *, arg):
-        await clang.highlight(ctx, arg)
+        await javascript.highlight(ctx, arg)
 
 
 def setup(client):
